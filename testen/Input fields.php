@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Auto update WP and disable e-mail notifications
- * Plugin URI: https://wilbrink.design/wp-plugins/wd-auto-update-wp
- * Description: Due to security requirements it is very important to keep your WordPress site up-to-date. This plug-in will auto update WordPress Core, Themes, Plug-ins and Translations. E-mail notifications about WordPress updates will be disabled.
+ * Plugin Name: Test input fields
+ * Plugin URI: https://wilbrink.design/wp-plugins/wd-test-input-fields
+ * Description: Test input fields.
  * Version: 1.1
  * Author: Wilbrink Design
  * Author URI: https://wilbrink.design
