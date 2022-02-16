@@ -32,7 +32,12 @@ function wd_ip_client_db()
 // Settings page
 function wd_client_ip_page()
 { 
-    echo "Last known client IP: " . get_option('wd_ip_client');    
+    ?>
+
+    <div class='wrap'>
+        <h1><?php echo "Last known IP: ".get_option('wd_ip_client').""; ?></h1>
+    </div>
+    <?php
 }
 
 // Settings link
