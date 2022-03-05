@@ -8,44 +8,73 @@
  * Author URI: https://wilbrink.design
  */
 
-// Retrieving an option from the database
-get_option('wd_ip_client', 'WD Client IP');
+// Create sql table
+function wd_ip_install() 
+{
+    global $wpdb;
 
-// Update a saved database option
-update_option('wd_ip_client', $_SERVER['REMOTE_ADDR'], 'yes');
+    $table_name = $wpdb->prefix . 'ip_clients';
+    
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        datum datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+        ip tinytext NOT NULL,
+        PRIMARY KEY  (id)
+    ) $charset_collate;";
+
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+
+// Add data to the sql table
+function wd_ip_data() 
+{
+    global $wpdb;
+    
+    $ip = $_SERVER['REMOTE_ADDR'];
+    
+    $table_name = $wpdb->prefix . 'ip_clients';
+    
+    $wpdb->insert( 
+        $table_name, 
+        array( 
+            'datum' => current_time('mysql'), 
+            'ip' => $ip, 
+        ) 
+    );
+}
+
+// Call functions
+wd_ip_install();
+wd_ip_data();
 
 // Plugin menu
-function wd_ip_client_menu()
+function wd_ips_client_menu()
 {
-    add_options_page('Client IP', 'Client IP', 'manage_options', 'wd-client-ip', 'wd_client_ip_page'); // Create menu option in Settings
-    add_action('admin_init', 'wd_ip_client_db'); // Register input fields voor database
+    add_options_page('Client IPs', 'Client IPs', 'manage_options', 'wd-client-ips', 'wd_client_ips_page'); // Create menu option in Settings
 }
 
-add_action('admin_menu', 'wd_ip_client_menu'); // Add to the menu
-
-// Plugin settings for database
-function wd_ip_client_db()
-{
-    register_setting( 'pluginPage', 'wd_ip_client' ); // Register input fields, only these fields you can use
-}
+add_action('admin_menu', 'wd_ips_client_menu'); // Add to the menu
 
 // Settings page
-function wd_client_ip_page()
+function wd_client_ips_page()
 { 
     ?>
 
     <div class='wrap'>
-        <h1><?php echo "Last known IP: ".get_option('wd_ip_client').""; ?></h1>
+        <!-- <h1><?php echo "Last known IP: ".get_option('wd_ip_client').""; ?></h1> -->
     </div>
     <?php
 }
 
 // Settings link
-function wd_client_ip_link($links) 
+function wd_client_ips_link($links) 
 {
-    $links[] = '<a href="'.admin_url( 'options-general.php?page=wd-client-ip' ).'">'.__('Settings').'</a>';
+    $links[] = '<a href="'.admin_url( 'options-general.php?page=wd-client-ips' ).'">'.__('Settings').'</a>';
     
     return $links;
 }
 
-add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'wd_client_ip_link');
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'wd_client_ips_link');
