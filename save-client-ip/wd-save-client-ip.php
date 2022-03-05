@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Save client IP
+ * Plugin Name: Save client IPs
  * Plugin URI: https://wilbrink.design
- * Description: Save client IP to the Wordpress database.
+ * Description: Save client IPs to the Wordpress database.
  * Version: 1.0
  * Author: Wilbrink Design
  * Author URI: https://wilbrink.design
