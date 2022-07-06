@@ -2,7 +2,7 @@
 Contributors: wilbrinkdesign
 Tags: auto update, auto upgrade, update, upgrade, disable email notifications, email notification, security
 Requires at least: 5.5
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 1.1
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -16,8 +16,8 @@ Due to security requirements it is very important to keep your WordPress site up
 
 == Installation ==
 
-1. You can install this plugin by searching in WordPress => Plugins => Add New => Search for "Wilbrink Design".
-2. You can install this plugin by pressing the Download button and uploading the .ZIP file in WordPress => Plugins => Add New => Upload Plugin.
+1. You can install this plugin by searching in WordPress => Plugins => Add New => Search for "Wilbrink Design"
+2. You can install this plugin by pressing the Download button and uploading the .ZIP file in WordPress => Plugins => Add New => Upload Plugin => Activate
 
 == Screenshots ==
 
@@ -34,7 +34,7 @@ Please check the [plugin installation guide](https://wordpress.org/plugins/auto-
 No, this plugin will update all WordPress components, no exceptions. It is very important to keep everything up-to-date.
 
 = Can I enable email notification for WordPress updates? =
-No, this plugin will disable email notifications for WordPress updates. Otherwise you would receive emails on a daily basis because everything is updated almost every day.
+No, this plugin will disable email notifications for WordPress updates. Otherwise you would receive emails on a daily basis.
 
 == Changelog ==
 
